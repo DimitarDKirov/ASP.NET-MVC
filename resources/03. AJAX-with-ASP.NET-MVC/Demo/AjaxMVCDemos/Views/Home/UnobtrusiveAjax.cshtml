@@ -12,3 +12,14 @@
    class="btn btn-primary">
     Get server time
 </a>
+
+@section scripts
+    {
+    <script>
+        $(function () {
+            $('a[data-ajax="true"]').click(function () {
+                $("#timeDisplay").html("Loading...")
+            });
+        });
+    </script>
+    }

@@ -59,7 +59,7 @@
             var books = BooksData.GetAll()
                 .AsQueryable().Select(TitledBookViewModel.FromBook);
 
-            return this.Json(books, JsonRequestBehavior.AllowGet);
+            return this.Json(new { data = books }, JsonRequestBehavior.AllowGet);
         }
     }
 }
