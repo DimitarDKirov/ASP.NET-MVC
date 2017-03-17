@@ -1,4 +1,5 @@
 ﻿using HW_AJAX_MVC.Data;
+using HW_AJAX_MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,14 @@ namespace HW_AJAX_MVC.Controllers
 
         public ActionResult Index()
         {
-            var movies = this.dbContext.Movies.ToList();
+            var movies = this.dbContext
+                .Movies
+                .Select(m => new MoviesListViewModel
+                {
+                    Id = m.Id,
+                    Title = m.Title
+                })
+                .ToList();
 
             return View(movies);
         }
